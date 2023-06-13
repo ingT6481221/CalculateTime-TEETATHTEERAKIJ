@@ -1,36 +1,21 @@
-void getTime(int &h,int &m)
-{
-  cout<<"Input hour & min: ";
-  cin>>h>>m;
+void getTime(int &h, int &m) { cin >> h >> m; }
+
+int subtract(int &h1, int &m1, int &h2, int &m2) {
+  int hr = h2 - h1;
+  int min = m2 - m1;
+  if (min < 0) {
+    hr -= 1;
+  }
+  if (hr < 0) {
+    hr += 24;
+  }
+  return hr;
 }
 
-int subtract(int h1,int m1,int h2,int m2)
-{
-  if(h1>h2 && m1<m2)
-  {
-    return (h2+24)-h1;
+int subtract(int &m1, int &m2) {
+  int min = m2 - m1;
+  if (min < 0) {
+    min += 60;
   }
-  else if(h1>h2 && m1>m2)
-  {
-   return (h2+23)-h1;
-  }
-  else if(h1<h2 && m1<m2)
-  {
-    return h2-h1;
-  }
-  else if(h1<h2 && m1>m2)
-  {
-    return (h2-1)-h1;
-  }
-  
-}
-
-int subtract(int m1,int m2)
-{
-  if(m1>m2)
-  {
-    return (60+m2)-m1;
-  }
-  else
-    return m2-m1;
+  return min;
 }
